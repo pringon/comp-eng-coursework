@@ -6,8 +6,30 @@
 
 int main(int argc, char* argv[]) {
 
-  InstructionRegister reg;
-  reg.loadInstructions(argv[1]);
+  InstructionRegister taskRunner;
+  taskRunner.loadInstructions(argv[1]);
+
+  while(taskRunner.programRunning()) {
+
+    switch(instructions[programCounter].opcode) {
+      case "ADD":
+        break;
+      case "ADDI":
+        break;
+      case "SUB":
+        break;
+      case "SUBI":
+        break;
+      case "LOAD":
+        break;
+      case "STORE":
+        break;
+      case "BNE":
+        break;
+      case "BEZ":
+        break;
+    }
+  }
 
   return 0;
 }

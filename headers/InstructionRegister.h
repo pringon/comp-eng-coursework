@@ -14,14 +14,19 @@ class InstructionRegister {
 private:
   std::vector<Instruction> instructions;
   bool debug;
+  int programCounter;
 
+  bool instrutionsLoaded();
   Instruction parseInstruction(std::vector<std::string> rawInstruction);
 
 public:
   InstructionRegister();
   void enableDebug();
   bool loadInstructions(std::string fileName);
-  bool executeInstructions();
+  void startExecution();
+  bool programRunning();
+  Instruction nextInstruction();
+  bool branch(int newLocation);
 };
 
 #endif

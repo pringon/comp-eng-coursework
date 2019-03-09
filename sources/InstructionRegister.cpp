@@ -77,37 +77,51 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
   return true;
 }
 
-bool InstructionRegister::executeInstructions() {
-
-  programSize = instructions.size();
+bool InstructionRegister::instructionsLoaded() {
   if (programSize <= 0) {
+
     std::cout<<"Error: you must first load instructions";
     return false;
   }
+  return true;
+}
 
-  int programCounter = 0;
+void InstructionRegister::startExecution() {
 
-  while(programCounter < programSize) {
-
-    switch(instructions[programCounter].opcode) {
-      case "ADD":
-        break;
-      case "ADDI":
-        break;
-      case "SUB":
-        break;
-      case "SUBI":
-        break;
-      case "LOAD":
-        break;
-      case "STORE":
-        break;
-      case "BNE":
-        break;
-      case "BEZ":
-        break;
-    }
+  if(!instructionsLoaded()) {
+    return;
   }
 
+  programCounter = 0;
+}
+
+bool InstructionRegister::programRunning() {
+
+  if (!instructionsLoaded) {
+    return false;
+  }
+
+  if (programCounter < instructions.size() - 1) {
+    return true;
+  }
+  return false;
+}
+
+Instruction InstructionRegister::nextInstruction() {
+
+  if (!instructionsLoaded) {
+    return NULL;
+  }
+
+  return instructions[programCounter++];
+}
+
+bool InstructionRegister::branch(int newLocation) {
+
+  if (!instructionsLoaded) {
+    return false;
+  }
+
+  programCounter = newLocation;
   return true;
 }
