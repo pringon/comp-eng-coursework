@@ -3,8 +3,14 @@
 
 class Memory {
 
+  int *mem;
+  int size;
+
 public:
-  Memory();
+  Memory(int size);
+  ~Memory();
+  bool read(int address, int* target);
+  bool write(int address, int value);
 };
 
 #endif

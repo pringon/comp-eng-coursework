@@ -11,8 +11,17 @@ typedef struct Instruction {
 
 class InstructionRegister {
 
+private:
+  std::vector<Instruction> instructions;
+  bool debug;
+
+  Instruction parseInstruction(std::vector<std::string> rawInstruction);
+
 public:
   InstructionRegister();
+  void enableDebug();
+  bool loadInstructions(std::string fileName);
+  bool executeInstructions();
 };
 
 #endif
