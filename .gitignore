@@ -1,4 +1,5 @@
 cpu
+test-suite
 .*
 cmake-build-debug/
 CMakeLists.txt
