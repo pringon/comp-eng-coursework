@@ -5,10 +5,12 @@
 Memory::Memory(int size, int valueToInitialize/* = 0 */) {
   
   mem = new int[size];
+  locked = new bool[size];
   this->size = size;
 
   for(int i = 0; i < size; i++) {
     mem[i] = 0;
+    locked[i] = false;
   }
 }
 
@@ -34,9 +36,23 @@ bool Memory::write(int address, int value) {
     return false;
   }
 
+  if (locked[address]) {
+    std::cout<<"Error: memory address is locked";
+    return false;
+  }
+
   mem[address] = value;
 
   return true;
+}
+
+bool Memory::lockMem(int address) {
+  
+  if (!locked[address]) {
+    locked[address] = true;
+    return true;
+  }
+  return false;
 }
 
 void Memory::logAll() {

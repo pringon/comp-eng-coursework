@@ -7,7 +7,7 @@
 
 void logInstruction(Instruction* instruction) {
 
-      std::cout<<"Performing an "<<instruction->opcode<<".\n";
+      std::cout<<"Performing "<<instruction->opcode<<".\n";
      
       std::vector<int>::iterator argsIt = instruction->arguments.begin();
 
@@ -25,12 +25,12 @@ int main(int argc, char* argv[]) {
   // Main memory of the processor.
   Memory mainMem(100000);
   // Registers that operations will be performed on.
-  // First register always has a value of 0.
   Memory registers(31);
-
+  // First register always has a value of 0.
+  registers.lockMem(0);
   taskRunner.loadInstructions(argv[1]);
   bool debugMode = false;
-  if(!strcmp(argv[2], "-debug")) {
+  if(argv[2] != NULL && !strcmp(argv[2], "-debug")) {
     std::cout<<"Start emulation in debug mode."<<std::endl;
     debugMode = true;
   }
