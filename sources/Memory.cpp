@@ -5,8 +5,11 @@
 Memory::Memory(int size, int valueToInitialize/* = 0 */) {
   
   mem = new int[size];
-  mem = {0};
   this->size = size;
+
+  for(int i = 0; i < size; i++) {
+    mem[i] = 0;
+  }
 }
 
 Memory::~Memory() {
@@ -34,4 +37,12 @@ bool Memory::write(int address, int value) {
   mem[address] = value;
 
   return true;
+}
+
+void Memory::logAll() {
+
+  std::cout<<"Logging all words from memory.\n";
+  for(int i = 0; i < size; i++) {
+    std::cout<<i<<": "<<mem[i]<<'\n';
+  }
 }

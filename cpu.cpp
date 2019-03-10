@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
   while(taskRunner.programRunning()) {
 
-    Instruction* currentInstruction = taskRunner.nextInstruction();
+    Instruction *currentInstruction = taskRunner.nextInstruction();
     std::string opcode = currentInstruction->opcode;
     std::vector<int> arguments = currentInstruction->arguments;
 
@@ -47,54 +47,60 @@ int main(int argc, char* argv[]) {
 
     if (!opcode.compare("ADD")) {
       registers.write(
-        arguments[0],
-        ALU::add(
-          registers.read(arguments[1]),
-          registers.read(arguments[2])
-        )
+              arguments[0],
+              ALU::add(
+                      registers.read(arguments[1]),
+                      registers.read(arguments[2])
+              )
       );
-    } else if(!opcode.compare("ADDI")) {
+    } else if (!opcode.compare("ADDI")) {
       registers.write(
-        arguments[0],
-        ALU::add(
-          registers.read(arguments[1]),
-          arguments[2]
-        )
+              arguments[0],
+              ALU::add(
+                      registers.read(arguments[1]),
+                      arguments[2]
+              )
       );
-    } else if(!opcode.compare("SUB")) {
+    } else if (!opcode.compare("SUB")) {
       registers.write(
-        arguments[0],
-        ALU::sub(
-          registers.read(arguments[1]),
-          registers.read(arguments[2])
-        )
+              arguments[0],
+              ALU::sub(
+                      registers.read(arguments[1]),
+                      registers.read(arguments[2])
+              )
       );
-    } else if(!opcode.compare("SUBI")) {
+    } else if (!opcode.compare("SUBI")) {
       registers.write(
-        arguments[0],
-        ALU::sub(
-          registers.read(arguments[1]),
-          arguments[2]
-        )
+              arguments[0],
+              ALU::sub(
+                      registers.read(arguments[1]),
+                      arguments[2]
+              )
       );
-    } else if(!opcode.compare("LOAD")) {
+    } else if (!opcode.compare("LOAD")) {
       registers.write(
-        arguments[0],
-        registers.read(arguments[1])
+              arguments[0],
+              registers.read(arguments[1])
       );
-    } else if(!opcode.compare("STORE")) {
+    } else if (!opcode.compare("STORE")) {
       registers.write(
-        registers.read(arguments[1]),
-        arguments[0]
+              registers.read(arguments[1]),
+              arguments[0]
       );
-    } else if(!opcode.compare("BNE")) {
+    } else if (!opcode.compare("BNE")) {
       if (registers.read(arguments[0]) != 0) {
-        taskRunner.branch(arguments[1]-1);
+        taskRunner.branch(arguments[1] - 1);
       }
-    } else if(!opcode.compare("BEZ")) {
+    } else if (!opcode.compare("BEZ")) {
       if (registers.read(arguments[0]) == 0) {
-        taskRunner.branch(arguments[1]-1);
+        taskRunner.branch(arguments[1] - 1);
       }
+    } else if(!opcode.compare("PRINT")) {
+
+      std::cout<<"Value in register "<<arguments[0];
+      std::cout<<": "<<registers.read(arguments[0])<<".\n";
+    } else if(!opcode.compare("DUMP")) {
+      registers.logAll();
     } else {
       std::cout<<"Error: Instruction not implemented";
     }

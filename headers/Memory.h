@@ -11,6 +11,7 @@ public:
   ~Memory();
   int read(int address);
   bool write(int address, int value);
+  void logAll();
 };
 
 #endif

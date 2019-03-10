@@ -1,1 +1,4 @@
 cpu
+.vscode/
+cmake-build-debug/
+CMakeLists.txt

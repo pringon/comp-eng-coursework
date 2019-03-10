@@ -58,7 +58,7 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
   std::string line;
   std::getline(codeFile, line);
   if (!line.compare("")) {
-    std::cout<<"Fatal error: no code in file.";
+    std::cout<<"Fatal error: no code in file: "<<fileName<<".\n";
     return false;
   }
   // Loop until end of file.
@@ -104,7 +104,7 @@ bool InstructionRegister::programRunning() {
     return false;
   }
 
-  if (programCounter < (int)(instructions.size()) - 1) {
+  if (programCounter < (int)(instructions.size())) {
     return true;
   }
   return false;
