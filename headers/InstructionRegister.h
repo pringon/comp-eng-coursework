@@ -16,7 +16,7 @@ private:
   bool debug;
   int programCounter;
 
-  bool instrutionsLoaded();
+  bool instructionsLoaded();
   Instruction parseInstruction(std::vector<std::string> rawInstruction);
 
 public:
@@ -25,7 +25,7 @@ public:
   bool loadInstructions(std::string fileName);
   void startExecution();
   bool programRunning();
-  Instruction nextInstruction();
+  Instruction* nextInstruction();
   bool branch(int newLocation);
 };
 

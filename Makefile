@@ -3,7 +3,7 @@ CFLAGS = -g -Wall -I .
 TARGET = cpu
 
 FILES = $(TARGET).cpp sources/InstructionRegister.cpp \
-				sources/Register.cpp sources/Memory.cpp
+				sources/Memory.cpp sources/ALU.cpp
 
 
 all: $(TARGET)

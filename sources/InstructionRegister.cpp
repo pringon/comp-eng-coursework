@@ -74,11 +74,13 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
     std::getline(codeFile, line);
   } while (line.compare(""));
 
+  startExecution();
+
   return true;
 }
 
 bool InstructionRegister::instructionsLoaded() {
-  if (programSize <= 0) {
+  if (instructions.size() <= 0) {
 
     std::cout<<"Error: you must first load instructions";
     return false;
@@ -97,28 +99,29 @@ void InstructionRegister::startExecution() {
 
 bool InstructionRegister::programRunning() {
 
-  if (!instructionsLoaded) {
+  if (!instructionsLoaded()) {
+    std::cout<<"Execution hasn't started"<<std::endl;
     return false;
   }
 
-  if (programCounter < instructions.size() - 1) {
+  if (programCounter < (int)(instructions.size()) - 1) {
     return true;
   }
   return false;
 }
 
-Instruction InstructionRegister::nextInstruction() {
+Instruction* InstructionRegister::nextInstruction() {
 
-  if (!instructionsLoaded) {
+  if (!instructionsLoaded()) {
     return NULL;
   }
 
-  return instructions[programCounter++];
+  return &instructions[programCounter++];
 }
 
 bool InstructionRegister::branch(int newLocation) {
 
-  if (!instructionsLoaded) {
+  if (!instructionsLoaded()) {
     return false;
   }
 
