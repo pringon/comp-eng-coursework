@@ -9,20 +9,16 @@ SCENARIO("Memory created without initial value", "[Memory]") {
   WHEN("value is written") {
     mock.write(2, 15); 
 
-    THEN("should be able to read it") {
-
-      REQUIRE( mock.read(2) == 15);
-    }
-
     WHEN("Value is locked") {
       mock.lockMem(2); 
 
       THEN("should not be able to reassign") {
 
         REQUIRE( mock.write(2, 22) == false);
-        REQUIRE( mock.read(2) == 15);
       }
     }
+
+    REQUIRE( mock.read(2) == 15);
   }
 }
 
