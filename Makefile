@@ -3,9 +3,10 @@ CFLAGS = -g -Wall -I .
 TARGET = cpu
 
 MODULES = sources/InstructionRegister.cpp \
-				sources/Memory.cpp sources/ALU.cpp
+	  sources/Memory.cpp sources/ALU.cpp
 
-TEST_FILES = tests/$(TARGET).cpp tests/ALU.cpp
+TEST_FILES = tests/$(TARGET).cpp tests/ALU.cpp \
+	     tests/Memory.cpp
 
 all: $(TARGET)
 
@@ -17,3 +18,4 @@ test: $(MODULES) $(TEST_FILES)
 
 clean:
 	$(RM) $(TARGET)
+	$(RM) test-suite

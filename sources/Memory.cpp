@@ -2,14 +2,14 @@
 
 #include <iostream>
 
-Memory::Memory(int size, int valueToInitialize/* = 0 */) {
+Memory::Memory(int size, int valueToInitialise/* = 0 */) {
   
   mem = new int[size];
   locked = new bool[size];
   this->size = size;
 
   for(int i = 0; i < size; i++) {
-    mem[i] = 0;
+    mem[i] = valueToInitialise;
     locked[i] = false;
   }
 }
