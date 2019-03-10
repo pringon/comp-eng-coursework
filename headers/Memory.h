@@ -7,9 +7,9 @@ class Memory {
   int size;
 
 public:
-  Memory(int size);
+  Memory(int size, int valueToInitialize = 0);
   ~Memory();
-  bool read(int address, int* target);
+  int read(int address);
   bool write(int address, int value);
 };
 

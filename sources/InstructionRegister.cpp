@@ -36,7 +36,7 @@ Instruction InstructionRegister::parseInstruction(std::vector<std::string> rawIn
     if(debug) {
       std::cout<<*instructionIt<<' ';
     }
-    instruction.arguments.push_back(*(instructionIt++));
+    instruction.arguments.push_back(std::stoi(*(instructionIt++)));
   }
   if(debug) {
     std::cout<<'\n';

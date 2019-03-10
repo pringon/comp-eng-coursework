@@ -2,9 +2,10 @@
 
 #include <iostream>
 
-Memory::Memory(int size) {
+Memory::Memory(int size, int valueToInitialize = 0) {
   
   mem = new int[size];
+  mem = {0};
   this->size = size;
 }
 
@@ -16,13 +17,11 @@ Memory::~Memory() {
 bool Memory::read(int address, int* target) {
 
   if (address >= size) {
-    std::cout<<"Index error: address out of bounts";
+    std::cout<<"Index error: address out of bounds";
     return false;
   }
 
-  *target = mem[address];
-
-  return true;
+  return mem[address];
 }
 
 bool Memory:write(int address, int value) {

@@ -6,7 +6,7 @@
 
 typedef struct Instruction {
   std::string opcode;
-  std::vector<std::string> arguments;
+  std::vector<int> arguments;
 } Instruction;
 
 class InstructionRegister {
