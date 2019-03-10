@@ -55,6 +55,16 @@ bool Memory::lockMem(int address) {
   return false;
 }
 
+bool Memory::unlockMem(int address) {
+
+  if (locked[address]) {
+
+    locked[address] = false;
+    return true;
+  }
+  return false;
+}
+
 void Memory::logAll() {
 
   std::cout<<"Logging all words from memory.\n";

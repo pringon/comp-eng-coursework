@@ -14,6 +14,7 @@ public:
   int read(int address);
   bool write(int address, int value);
   bool lockMem(int address);
+  bool unlockMem(int address);
   void logAll();
 };
 
