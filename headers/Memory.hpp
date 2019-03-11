@@ -9,11 +9,12 @@ private:
   int size;
 
 public:
-  Memory(int size, int valueToInitialize = 0);
+  Memory(int size, int valueToInitialise = 0);
   ~Memory();
   int read(int address);
   bool write(int address, int value);
   bool lockMem(int address);
+  bool unlockMem(int address);
   void logAll();
 };
 

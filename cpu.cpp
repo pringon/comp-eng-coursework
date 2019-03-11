@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstring>
 
-#include "headers/InstructionRegister.h"
-#include "headers/Memory.h"
-#include "headers/ALU.h"
+#include "headers/InstructionRegister.hpp"
+#include "headers/Memory.hpp"
+#include "headers/ALU.hpp"
 
 void logInstruction(Instruction* instruction) {
 

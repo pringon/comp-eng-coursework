@@ -1,15 +1,15 @@
-#include "../headers/Memory.h"
+#include "../headers/Memory.hpp"
 
 #include <iostream>
 
-Memory::Memory(int size, int valueToInitialize/* = 0 */) {
+Memory::Memory(int size, int valueToInitialise/* = 0 */) {
   
   mem = new int[size];
   locked = new bool[size];
   this->size = size;
 
   for(int i = 0; i < size; i++) {
-    mem[i] = 0;
+    mem[i] = valueToInitialise;
     locked[i] = false;
   }
 }
@@ -50,6 +50,16 @@ bool Memory::lockMem(int address) {
   
   if (!locked[address]) {
     locked[address] = true;
+    return true;
+  }
+  return false;
+}
+
+bool Memory::unlockMem(int address) {
+
+  if (locked[address]) {
+
+    locked[address] = false;
     return true;
   }
   return false;
