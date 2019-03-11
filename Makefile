@@ -6,7 +6,7 @@ MODULES = sources/InstructionRegister.cpp \
 	  sources/Memory.cpp sources/ALU.cpp
 
 TEST_FILES = tests/$(TARGET).cpp tests/ALU.cpp \
-	     tests/Memory.cpp
+	     tests/Memory.cpp tests/InstructionRegister.cpp
 
 all: $(TARGET)
 
