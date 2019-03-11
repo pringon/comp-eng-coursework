@@ -1,4 +1,5 @@
-#include "../headers/ALU.h"
+#include "../headers/ALU.hpp"
+
 #include "../libs/catch.hpp"
 
 SCENARIO("ALU perfoms operations correctly", "[ALU]") {

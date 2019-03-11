@@ -1,4 +1,4 @@
-#include "../headers/InstructionRegister.h"
+#include "../headers/InstructionRegister.hpp"
 
 #include <iostream>
 #include <fstream>
