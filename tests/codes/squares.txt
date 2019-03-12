@@ -1,0 +1,16 @@
+// Start program.
+ADDI 1 0 0
+ADDI 2 0 99
+// Loop through numbers.
+ADDI 1 1 1
+// Calculate square.
+ADD 5 0 1
+ADDI 6 0 0
+ADD 6 6 1
+SUBI 5 5 1
+BNE 5 5
+PRINT 6
+// End calculate square.
+SUB 3 2 1
+BNE 3 2
+// End loop through numbers.

@@ -67,7 +67,8 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
     std::getline(codeFile, line);
 
     // Skip iteration if line is empty. (avoid error)
-    if (!line.compare("")) {
+    // Also skip iterations if comments are encountered.
+    if (!line.compare("") || line.find("//") != std::string::npos) {
       continue;
     }
 

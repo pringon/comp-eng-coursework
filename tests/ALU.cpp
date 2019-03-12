@@ -22,4 +22,14 @@ SCENARIO("ALU perfoms operations correctly", "[ALU]") {
     REQUIRE( ALU::sub(-3, 12) == -15 );
     REQUIRE( ALU::sub(-16, -23) == 7);
   }
+
+  WHEN("multiplying") {
+
+    // To do.
+  }
+
+  WHEN("dividing") {
+
+    // To do.
+  }
 }
