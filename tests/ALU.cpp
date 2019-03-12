@@ -25,11 +25,16 @@ SCENARIO("ALU perfoms operations correctly", "[ALU]") {
 
   WHEN("multiplying") {
 
-    // To do.
+    REQUIRE( ALU::multiplty(3, 2) == 6 );
+    REQUIRE( ALU::multiplty(3, -2) == -6 );
+    REQUIRE( ALU::multiplty(-3, -2) == 6);
   }
 
   WHEN("dividing") {
 
-    // To do.
+    REQUIRE( ALU::divide(3, 2) == 1 );
+    REQUIRE( ALU::divide(-3, 2) == -1 );
+    REQUIRE( ALU::divide(3, -2) == -1 );
+    REQUIRE( ALU::divide(-3, -2) == 1 );
   }
 }
