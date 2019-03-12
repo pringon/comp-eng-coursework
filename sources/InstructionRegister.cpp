@@ -77,9 +77,7 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
       std::istream_iterator<std::string>()
     );
 
-    std::cout<<"Intra: "<<line.length()<<std::endl;
     instructions.push_back(parseInstruction(rawInstruction));
-
   }
 
   startExecution();

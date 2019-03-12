@@ -84,11 +84,11 @@ void CPU::run() {
       );
     } else if (!opcode.compare("BNE")) {
       if (registers->read(arguments[0]) != 0) {
-        taskRunner->branch(arguments[1] - 1);
+        taskRunner->branch(arguments[1]);
       }
     } else if (!opcode.compare("BEZ")) {
       if (registers->read(arguments[0]) == 0) {
-        taskRunner->branch(arguments[1] - 1);
+        taskRunner->branch(arguments[1]);
       }
     } else if(!opcode.compare("PRINT")) {
 
