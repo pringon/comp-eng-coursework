@@ -55,24 +55,32 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
 
   codeFile.open(fileName);
 
-  std::string line;
-  std::getline(codeFile, line);
-  if (!line.compare("")) {
+  if (codeFile.eof()) {
     std::cout<<"Fatal error: no code in file: "<<fileName<<".\n";
     return false;
   }
+
+  std::string line;
   // Loop until end of file.
-  do {
+  while(!codeFile.eof()) {
+    
+    std::getline(codeFile, line);
+
+    // Skip iteration if line is empty. (avoid error)
+    if (!line.compare("")) {
+      continue;
+    }
+
     std::istringstream iss(line);
     std::vector<std::string> rawInstruction(
       (std::istream_iterator<std::string>(iss)),
       std::istream_iterator<std::string>()
     );
 
+    std::cout<<"Intra: "<<line.length()<<std::endl;
     instructions.push_back(parseInstruction(rawInstruction));
 
-    std::getline(codeFile, line);
-  } while (line.compare(""));
+  }
 
   startExecution();
 

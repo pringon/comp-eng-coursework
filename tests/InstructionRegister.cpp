@@ -20,7 +20,7 @@ SCENARIO("Basic instruction register functioning", "[InstructionRegister]") {
 
   WHEN("file provided exists") {
 
-    REQUIRE( taskRunner.loadInstructions("./testFile.txt") == true );
+    REQUIRE( taskRunner.loadInstructions("./tests/codes/testFile.txt") == true );
 
     THEN("execution can start") {
 
