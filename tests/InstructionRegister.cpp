@@ -2,12 +2,13 @@
 
 #include "../libs/catch.hpp"
 
+#include <iostream>
+
 SCENARIO("Basic instruction register functioning", "[InstructionRegister]") {
 
   InstructionRegister taskRunner;
 
   WHEN("file provided doesn't exist") {
-
     REQUIRE( taskRunner.loadInstructions("./not-here.txt") == false );
 
     THEN("execution will not start") {

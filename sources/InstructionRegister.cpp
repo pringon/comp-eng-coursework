@@ -52,8 +52,12 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
   }
 
   std::ifstream codeFile;
-
   codeFile.open(fileName);
+
+  if (codeFile.fail()) {
+    std::cout<<"There what an error when trying to open file: "<<fileName<<".\n";
+    return false;
+  }
 
   if (codeFile.eof()) {
     std::cout<<"Fatal error: no code in file: "<<fileName<<".\n";
@@ -89,7 +93,7 @@ bool InstructionRegister::loadInstructions(std::string fileName) {
 bool InstructionRegister::instructionsLoaded() {
   if (instructions.size() <= 0) {
 
-    std::cout<<"Error: you must first load instructions";
+    std::cout<<"Error: you must first load instructions.\n";
     return false;
   }
   return true;
@@ -107,7 +111,7 @@ void InstructionRegister::startExecution() {
 bool InstructionRegister::programRunning() {
 
   if (!instructionsLoaded()) {
-    std::cout<<"Execution hasn't started"<<std::endl;
+    std::cout<<"Execution hasn't started."<<std::endl;
     return false;
   }
 
