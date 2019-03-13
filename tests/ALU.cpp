@@ -36,5 +36,9 @@ SCENARIO("ALU perfoms operations correctly", "[ALU]") {
     REQUIRE( ALU::divide(-3, 2) == -1 );
     REQUIRE( ALU::divide(3, -2) == -1 );
     REQUIRE( ALU::divide(-3, -2) == 1 );
+
+    REQUIRE( ALU::divide(4, 2) == 2 );
+    REQUIRE( ALU::divide(4, -2) == -2 );
+    REQUIRE( ALU::divide(-4, -2) == 2 );
   }
 }
