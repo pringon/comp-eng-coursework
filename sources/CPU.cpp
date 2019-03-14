@@ -72,6 +72,22 @@ void CPU::run() {
                       arguments[2]
               )
       );
+    } else if (!opcode.compare("MUL")) {
+      registers->write(
+              arguments[0],
+              ALU::multiplty(
+                      registers->read(arguments[1]),
+                      registers->read(arguments[2])
+              )
+      );
+    } else if(!opcode.compare("DIV")) {
+      registers->write(
+              arguments[0],
+              ALU::divide(
+                      registers->read(arguments[1]),
+                      registers->read(arguments[2])
+              )
+      );
     } else if (!opcode.compare("LOAD")) {
       registers->write(
               arguments[0],
@@ -89,6 +105,14 @@ void CPU::run() {
     } else if (!opcode.compare("BEZ")) {
       if (registers->read(arguments[0]) == 0) {
         taskRunner->branch(arguments[1]);
+      }
+    } else if (!opcode.compare("BGE")) {
+      if (registers->read(arguments[0]) >= registers->read(arguments[1])) {
+        taskRunner->branch(arguments[2]);
+      }
+    } else if (!opcode.compare("BLE")) {
+      if (registers->read(arguments[0]) <= registers->read(arguments[1])) {
+        taskRunner->branch(arguments[2]);
       }
     } else if(!opcode.compare("PRINT")) {
 
