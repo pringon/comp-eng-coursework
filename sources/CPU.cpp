@@ -81,12 +81,28 @@ void CPU::run() {
                       registers->read(arguments[2])
               )
       );
+    } else if (!opcode.compare("MULI")) {
+      registers->write(
+              arguments[0],
+              ALU::multiplty(
+                      registers->read(arguments[1]),
+                      arguments[2]
+              )
+      );
     } else if(!opcode.compare("DIV")) {
       registers->write(
               arguments[0],
               ALU::divide(
                       registers->read(arguments[1]),
                       registers->read(arguments[2])
+              )
+      );
+    } else if(!opcode.compare("DIVI")) {
+      registers->write(
+              arguments[0],
+              ALU::divide(
+                      registers->read(arguments[1]),
+                      arguments[2]
               )
       );
     } else if (!opcode.compare("LOAD")) {
