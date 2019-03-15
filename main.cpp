@@ -4,6 +4,7 @@ int main(int argc, char* argv[]) {
 
   std::string instructionsFile;
   std::string mode;
+  bool verbose = false;
 
   if (argv[1]) {
     instructionsFile = argv[1];
@@ -19,7 +20,11 @@ int main(int argc, char* argv[]) {
     mode = "normal";
   }
 
-  CPU cpu(instructionsFile, mode);
+  if (argv[3] && !strcmp(argv[3], "-v")) {
+    verbose = true;
+  }
+
+  CPU cpu(instructionsFile, mode, verbose);
   cpu.run();
 
   return 0;

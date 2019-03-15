@@ -1,7 +1,7 @@
 #include "../headers/CPU.hpp"
 #include "../headers/ALU.hpp"
 
-CPU::CPU(std::string instructionsFile, std::string mode/* = normal */) {
+CPU::CPU(std::string instructionsFile, std::string mode/* = normal */, bool verbose/* = false */) {
 
   taskRunner = new InstructionRegister();
   mainMem = new Memory(100000);
@@ -10,6 +10,7 @@ CPU::CPU(std::string instructionsFile, std::string mode/* = normal */) {
   registers->lockMem(0);
   taskRunner->loadInstructions(instructionsFile);
   this->mode = mode;
+  this->verbose = verbose;
 
   std::cout<<"Started emulation in "<<mode<<" mode"<<std::endl;
 }
@@ -118,10 +119,12 @@ void CPU::run() {
 
       std::cout<<"Value in register "<<arguments[0];
       std::cout<<": "<<registers->read(arguments[0])<<".\n";
-    } else if(!opcode.compare("DUMP")) {
-      registers->logAll();
     } else {
       std::cout<<"Error: Instruction not implemented";
+    }
+
+    if (mode == "debug" && verbose) {
+      registers->logAll();
     }
   }
 }
