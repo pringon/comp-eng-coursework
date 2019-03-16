@@ -136,6 +136,11 @@ bool InstructionRegister::branch(int newLocation) {
     return false;
   }
 
+  if (newLocation >= (int)instructions.size()) {
+    std::cout<<"Error: instruction out of bounds";
+    return false;
+  }
+
   programCounter = newLocation;
   return true;
 }
