@@ -4,7 +4,7 @@
 
 SCENARIO("Memory created without initial value", "[Memory]") {
 
-  Memory mock(10);
+  Memory mock("mock", 10);
 
   WHEN("value is written") {
     mock.write(2, 15); 
@@ -39,7 +39,7 @@ SCENARIO("Memory created without initial value", "[Memory]") {
 
 SCENARIO("Memory created with initial value", "[Memory]") {
 
-  Memory mock(10, 42);
+  Memory mock("mock", 10, 42);
 
   THEN("should be correctly initialised") {
     REQUIRE( mock.read(1) == 42 );

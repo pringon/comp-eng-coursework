@@ -2,7 +2,9 @@
 
 #include <iostream>
 
-Memory::Memory(int size, int valueToInitialise/* = 0 */) {
+Memory::Memory(std::string name, int size, int valueToInitialise/* = 0 */) {
+  
+  this->name = name;
   
   mem = new int[size];
   locked = new bool[size];
@@ -67,7 +69,7 @@ bool Memory::unlockMem(int address) {
 
 void Memory::logAll() {
 
-  std::cout<<"Logging all words from memory.\n";
+  std::cout<<"Logging all words from "<<this->name<<".\n";
   for(int i = 0; i < size; i++) {
     std::cout<<i<<": "<<mem[i]<<'\n';
   }

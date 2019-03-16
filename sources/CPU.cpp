@@ -4,8 +4,8 @@
 CPU::CPU(std::string instructionsFile, std::string mode/* = normal */, bool verbose/* = false */) {
 
   taskRunner = new InstructionRegister();
-  mainMem = new Memory(100000);
-  registers = new Memory(31);
+  mainMem = new Memory("main memory", 100000);
+  registers = new Memory("registers", 31);
 
   registers->lockMem(0);
   taskRunner->loadInstructions(instructionsFile);
